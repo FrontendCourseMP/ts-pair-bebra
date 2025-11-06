@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>Расчет времени прибытия</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h3>Расчет итогового времени прибытия</h3>
+
+        <label>Исходное время прибытия:</label>
+        <input type="number" class="arrival_hour__input" min="0" max="23" value="0">
+        <label>Время опоздания:</label>
+        <input type="number" class="delay_hour__input" min="0" value="0">
+
+        <div>
+          Итоговый час прибытия: 
+          <output class="actual_hour__output">0</output>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./dist/index.js"></script>
+  </body>
+</html>
