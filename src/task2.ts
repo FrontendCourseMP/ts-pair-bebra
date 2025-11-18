@@ -9,18 +9,18 @@ class BracketValidator {
     flag(bracketStr: string) : boolean {
         const stack: string[] = [];
         for (let symb of bracketStr) {
-            if (this.bracketDict.keys.includes(symb)) {
+            if (Object.keys(this.bracketDict).includes(symb)) {
                stack.push(symb);
             }
-            else if (this.bracketDict.values.includes(symb)) {
+            else if (Object.values(this.bracketDict).includes(symb)) {
                 if (stack.length === 0)
                     return false;
                 else {
                     const last = stack.pop();
-                    if (!last) {
+                    if (last !== undefined) {
                         return false;
-                    } else if (this.bracketDict[last] === symb){
-                        return false;
+                    } else if (last !== undefined && this.bracketDict[last] === symb){
+                        continue;
                     } else {
                         continue;
                     }
@@ -33,3 +33,7 @@ class BracketValidator {
             return false
     }
 }
+
+const brck1 = new BracketValidator
+
+console.log(brck1.flag('([]}{{]])'))

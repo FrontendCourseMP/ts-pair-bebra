@@ -18,3 +18,5 @@ arrivalHourInput?.addEventListener('input', updateActualHour)
 delayHourInput?.addEventListener('input', updateActualHour)
 
 updateActualHour()
+
+console.log(1)

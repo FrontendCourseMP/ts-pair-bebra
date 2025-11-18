@@ -12,6 +12,7 @@ function updateActualHour() {
         actualHourOutput.textContent = String(getActualTime(arrival, delay));
     }
 }
-arrivalHourInput?.addEventListener('change', updateActualHour);
-delayHourInput?.addEventListener('change', updateActualHour);
+arrivalHourInput?.addEventListener('input', updateActualHour);
+delayHourInput?.addEventListener('input', updateActualHour);
 updateActualHour();
+console.log(1);
