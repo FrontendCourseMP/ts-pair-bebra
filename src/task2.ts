@@ -15,25 +15,25 @@ class BracketValidator {
             else if (Object.values(this.bracketDict).includes(symb)) {
                 if (stack.length === 0)
                     return false;
-                else {
-                    const last = stack.pop();
-                    if (last !== undefined) {
-                        return false;
-                    } else if (last !== undefined && this.bracketDict[last] === symb){
-                        continue;
-                    } else {
-                        continue;
-                    }
-                } 
+                const lastOpening = stack.pop();
+                if (lastOpening && this.bracketDict[lastOpening] !== symb) {
+                    return false;
+                }
             }
         }
-        if (stack.length === 0)
-            return true
-        else
-            return false
+        return stack.length === 0;  
+    }
+}
+const bracketsInput: HTMLInputElement | null = document.querySelector('.brackets__input')
+const bracketsOutput: HTMLInputElement | null = document.querySelector('.brackets__output')
+
+const brckVldtr = new BracketValidator();
+
+function updateValidationResult(): void {
+    if (bracketsOutput && bracketsInput) {
+        const bracketsRes = brckVldtr.flag(bracketsInput.value);
+        bracketsOutput.textContent = bracketsRes ? 'да' : 'нет';
     }
 }
 
-const brck1 = new BracketValidator
-
-console.log(brck1.flag('([]}{{]])'))
+bracketsInput?.addEventListener('input', updateValidationResult)
